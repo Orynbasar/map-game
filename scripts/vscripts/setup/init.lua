@@ -1,9 +1,13 @@
-function init()
-    setupTeams()
-    setupGame()
+if CustomGameSetup == nil then
+    CustomGameSetup = class({})
 end
 
-function setupGame()
+function CustomGameSetup:init()
+    CustomGameSetup:setupTeams()
+    CustomGameSetup:setupGame()
+end
+
+function CustomGameSetup:setupGame()
     --Когда игроки заняли тимы после загрузочного экрана
     GameRules:EnableCustomGameSetupAutoLaunch(true)
     GameRules:SetCustomGameSetupAutoLaunchDelay(0)
@@ -17,7 +21,7 @@ function setupGame()
     GameRules:SetPostGameTime(5)
 end
 
-function setupTeams()
+function CustomGameSetup:setupTeams()
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 0)
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 0)
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1, 1)

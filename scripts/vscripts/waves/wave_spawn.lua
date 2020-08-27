@@ -5,8 +5,9 @@ function startWave()
 
     if hero ~= nil then
         local unit = CreateUnitByName("npc_dota_creep_badguys_melee",
-                Vector(-8192, -8192, 128), true, hero, hero, hero:GetTeamNumber())
+                Vector(0, 0, 128), true, hero, hero, hero:GetTeamNumber())
 
         unit:SetControllableByPlayer(player:GetPlayerID(), true)
+        FindClearSpaceForUnit(unit, Vector(0, 0, 128), true)
     end
 end
