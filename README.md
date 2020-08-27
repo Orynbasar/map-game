@@ -1,0 +1,1 @@
+eto tozhe readme file, vsem privet!
