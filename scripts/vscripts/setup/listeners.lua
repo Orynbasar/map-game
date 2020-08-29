@@ -12,14 +12,14 @@ function CustomListeners:OnGameRulesStateChange()
     print('new game state ', state)
 
     if state == DOTA_GAMERULES_STATE_HERO_SELECTION then
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_1)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_2)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_3)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_4)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_5)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_6)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_7)
-        CustomListeners:selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_8)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_1)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_2)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_3)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_4)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_5)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_6)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_7)
+        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_8)
     end
 
     if state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -27,7 +27,7 @@ function CustomListeners:OnGameRulesStateChange()
     end
 end
 
-function CustomListeners:selectRandomHeroForTeam(teamNum)
+function CustomListeners.selectRandomHeroForTeam(teamNum)
     local playerID = PlayerResource:GetNthPlayerIDOnTeam(teamNum, 1)
     if playerID ~= nil then
         if not PlayerResource:HasSelectedHero(playerID) then

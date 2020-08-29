@@ -4,9 +4,12 @@ if CAddonTemplateGameMode == nil then
     CAddonTemplateGameMode = class({})
 end
 
-require('waves/wave_spawn')
+require('util/class')
 require('setup/init')
+
+require('waves/wave_spawn')
 require('setup/listeners')
+require('units/defender')
 
 function Precache(context)
     --[[
@@ -28,5 +31,10 @@ function CAddonTemplateGameMode:InitGameMode()
     CAddonTemplateGameMode = self
 
     CustomGameSetup:init()
-    CustomListeners:init(CAddonTemplateGameMode)
+    CustomListeners:init()
+
+
+    Defender(50, "okk"):say()
+    Defender(70):say()
+    Defender(80, "assdf"):say()
 end
