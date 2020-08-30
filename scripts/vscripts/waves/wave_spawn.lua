@@ -15,7 +15,7 @@ function startWave()
 
                 unit:SetControllableByPlayer(player:GetPlayerID(), true)
                 FindClearSpaceForUnit(unit, Vector(0, 0, 128), true)
-                lasasdfasdfasd = false
+                onceeeeeeee = false
 
             end
 
