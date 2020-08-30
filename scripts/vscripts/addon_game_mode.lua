@@ -6,9 +6,11 @@ require('util/class')
 require('util/timers')
 require('util/log')
 require('setup/init')
+
 require('player/teams')
 require('player/spot')
 
+require('game/game')
 require('game/wave')
 require('setup/listeners')
 require('units/defender')
@@ -29,6 +31,7 @@ function Activate()
     Log:trace('Activate')
     GameRules.AddonTemplate = NewMap()
     GameRules.AddonTemplate:InitGameMode()
+    GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
     Log:trace('Activate end')
 end
 
@@ -41,9 +44,9 @@ end
 
 function initDebugMode()
     if IsInToolsMode() then
-        Log:SetLogLevel(DEBUG)
         --clear annoying previous console messages
-        SendToServerConsole("clear")
+        --SendToServerConsole("clear")
+        Log:SetLogLevel(DEBUG)
     else
         Log:SetLogLevel(INFO)
     end

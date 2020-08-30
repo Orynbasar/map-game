@@ -19,6 +19,8 @@ function CustomListeners:OnGameRulesStateChange()
 
     if state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         SpotList.init()
+        Game.init()
+        Game.start()
     end
 end
 

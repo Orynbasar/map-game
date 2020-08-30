@@ -15,10 +15,9 @@ Spot = createClass({
     playerID = nil,
     position = nil,
 
-    constructor = function(self, playerID, x, y)
+    constructor = function(self, playerID, position)
         self.playerID = playerID
-        self.x = x
-        self.y = y
+        self.position = position
     end
 }, {}, nil)
 
