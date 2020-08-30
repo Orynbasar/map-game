@@ -6,6 +6,8 @@ end
 
 require('util/class')
 require('setup/init')
+require('player/teams')
+require('player/spot')
 
 require('waves/wave_spawn')
 require('setup/listeners')
@@ -32,9 +34,4 @@ function CAddonTemplateGameMode:InitGameMode()
 
     CustomGameSetup:init()
     CustomListeners:init()
-
-
-    Defender(50, "okk"):say()
-    Defender(70):say()
-    Defender(80, "assdf"):say()
 end

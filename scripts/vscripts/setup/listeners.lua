@@ -12,17 +12,13 @@ function CustomListeners:OnGameRulesStateChange()
     print('new game state ', state)
 
     if state == DOTA_GAMERULES_STATE_HERO_SELECTION then
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_1)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_2)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_3)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_4)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_5)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_6)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_7)
-        self.selectRandomHeroForTeam(DOTA_TEAM_CUSTOM_8)
+        for i, v in ipairs(Teams) do
+            self.selectRandomHeroForTeam(v)
+        end
     end
 
     if state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        SpotList.init()
         GameRules:GetGameModeEntity():SetThink("OnThink", CustomListeners, "GlobalThink", 0)
     end
 end
@@ -41,7 +37,8 @@ end
 
 function CustomListeners:OnThink()
     startWave()
-    print("Template addon script is running.")
+
+    LimitPathingSearchDepth(1)
 
     if GameRules:State_Get() > DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         return nil
