@@ -9,21 +9,20 @@ end
 function CustomListeners:OnGameRulesStateChange()
     local state = GameRules:State_Get()
 
-    print('new game state ', state)
+    Log:debug('new game state ' .. state)
 
     if state == DOTA_GAMERULES_STATE_HERO_SELECTION then
-        for i, v in ipairs(Teams) do
-            self.selectRandomHeroForTeam(v)
+        for _, v in ipairs(Teams) do
+            self.selectHeroForTeam(v)
         end
     end
 
     if state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         SpotList.init()
-        GameRules:GetGameModeEntity():SetThink("OnThink", CustomListeners, "GlobalThink", 0)
     end
 end
 
-function CustomListeners.selectRandomHeroForTeam(teamNum)
+function CustomListeners.selectHeroForTeam(teamNum)
     local playerID = PlayerResource:GetNthPlayerIDOnTeam(teamNum, 1)
     if playerID ~= nil then
         if not PlayerResource:HasSelectedHero(playerID) then
@@ -35,15 +34,3 @@ function CustomListeners.selectRandomHeroForTeam(teamNum)
         end
     end
 end
-
-function CustomListeners:OnThink()
-    startWave()
-
-    LimitPathingSearchDepth(1)
-
-    if GameRules:State_Get() > DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        return nil
-    end
-    return 1
-end
-
