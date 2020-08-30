@@ -5,6 +5,8 @@ if CAddonTemplateGameMode == nil then
 end
 
 require('util/class')
+require('util/timers')
+require('util/log')
 require('setup/init')
 require('player/teams')
 require('player/spot')
@@ -25,13 +27,16 @@ end
 
 -- Create the game mode when we activate
 function Activate()
+    Log:SetLogLevel(DEBUG)
+    Log:trace('Activate')
     GameRules.AddonTemplate = CAddonTemplateGameMode()
     GameRules.AddonTemplate:InitGameMode()
+    Log:trace('Activate end')
 end
 
 function CAddonTemplateGameMode:InitGameMode()
-    CAddonTemplateGameMode = self
-
+    Log:trace('InitGameMode')
     CustomGameSetup:init()
     CustomListeners:init()
+    Log:trace('InitGameMode end')
 end

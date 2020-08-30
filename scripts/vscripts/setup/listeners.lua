@@ -29,7 +29,8 @@ function CustomListeners.selectRandomHeroForTeam(teamNum)
         if not PlayerResource:HasSelectedHero(playerID) then
             local hPlayer = PlayerResource:GetPlayer(playerID)
             if hPlayer ~= nil then
-                hPlayer:MakeRandomHeroSelection()
+                Log:info('Create hero for player:' .. playerID)
+                UTIL_Remove(CreateHeroForPlayer('npc_dota_hero_magnataur', hPlayer))
             end
         end
     end
