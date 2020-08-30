@@ -1,3 +1,15 @@
+Wave = createClass({
+    unitCount = 20,
+    unitName = 'npc_dota_hero_magnataur',
+    playerID = nil,
+
+    constructor = function(self, unitCount, unitName)
+        self.unitCount = unitCount
+        self.unitName = unitName
+    end
+
+}, {}, nil)
+
 function startWave()
     local player = PlayerResource:GetPlayer(0)
     local hero = player:GetAssignedHero()

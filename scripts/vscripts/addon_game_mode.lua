@@ -1,7 +1,5 @@
--- Generated from template
-
-if CAddonTemplateGameMode == nil then
-    CAddonTemplateGameMode = class({})
+if NewMap == nil then
+    NewMap = class({})
 end
 
 require('util/class')
@@ -11,7 +9,7 @@ require('setup/init')
 require('player/teams')
 require('player/spot')
 
-require('waves/wave_spawn')
+require('game/wave')
 require('setup/listeners')
 require('units/defender')
 
@@ -27,16 +25,26 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-    Log:SetLogLevel(DEBUG)
+    initDebugMode()
     Log:trace('Activate')
-    GameRules.AddonTemplate = CAddonTemplateGameMode()
+    GameRules.AddonTemplate = NewMap()
     GameRules.AddonTemplate:InitGameMode()
     Log:trace('Activate end')
 end
 
-function CAddonTemplateGameMode:InitGameMode()
+function NewMap:InitGameMode()
     Log:trace('InitGameMode')
     CustomGameSetup:init()
     CustomListeners:init()
     Log:trace('InitGameMode end')
+end
+
+function initDebugMode()
+    if IsInToolsMode() then
+        Log:SetLogLevel(DEBUG)
+        --clear annoying previous console messages
+        SendToServerConsole("clear")
+    else
+        Log:SetLogLevel(INFO)
+    end
 end
