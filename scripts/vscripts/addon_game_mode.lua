@@ -2,6 +2,7 @@ if NewMap == nil then
     NewMap = class({})
 end
 
+require('map/map')
 require('util/class')
 require('util/timers')
 require('util/log')

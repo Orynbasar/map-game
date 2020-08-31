@@ -1,11 +1,12 @@
 Wave = createClass({
     unitCount = 20,
-    unitName = 'npc_dota_hero_magnataur',
+    unitName = 'npc_dota_creature_dire_ranged',
     playerID = nil,
 
-    constructor = function(self, unitCount, unitName)
+    constructor = function(self, unitCount, unitName, playerID)
         self.unitCount = unitCount
         self.unitName = unitName
+        self.playerID = playerID
     end
 
 }, {}, nil)
@@ -14,26 +15,21 @@ function Wave:spawnWave()
     local playerSpot
 
     --change to SpotList:getSpotByPlayerID()
-    DeepPrintTable(SpotList)
     for _, spot in ipairs(SpotList) do
-        DeepPrintTable(spot)
-        print('kek')
-        print(spot.playerID)
-        print(self.playerID)
         if spot.playerID == self.playerID then
             playerSpot = spot
             break
         end
     end
 
-    DeepPrintTable(playerSpot)
     self:createWave(playerSpot)
 end
 
 function Wave:createWave(playerSpot)
-    for i = 30, 1, -1
+    for _ = 1, self.unitCount, 1
     do
+        print(playerSpot.position)
         local unit = CreateUnitByName(self.unitName, playerSpot.position, true, nil, nil, DOTA_TEAM_BADGUYS)
-        FindClearSpaceForUnit(unit, Vector(0, 0, 128), true)
+        FindClearSpaceForUnit(unit, playerSpot.position, true)
     end
 end

@@ -15,13 +15,12 @@ function Game.init()
 end
 
 function Game.start()
-    Timers:CreateTimer(3, function()
-        DeepPrintTable(Game.playersPool)
+    Timers:CreateTimer(1, function()
         for _, playerID in ipairs(Game.playersPool) do
-            Wave(10, 'npc_dota_hero_magnataur', playerID):spawnWave()
+            Wave(10, 'npc_dota_creep_badguys_ranged', playerID):spawnWave()
         end
 
-        return 5.0
+        return 5000.0
     end)
 
 end
