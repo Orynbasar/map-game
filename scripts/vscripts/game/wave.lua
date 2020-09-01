@@ -13,31 +13,21 @@ Wave = createClass({
         self.playerID = playerID
     end
 
-}, {}, nil)
+}, { rowCount = 3 }, nil)
 
 function Wave:spawnWave()
-    Log:info('Spawn wave for player', self.playerID)
+    Log:info('Spawn wave for player:' .. self.playerID)
     local playerSpot = SpotList:getSpotByPlayerID(self.playerID)
     local waveSpotCenter = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE)
     local waveSpotFirstEdge = waveSpotCenter - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
 
-    local units = {}
+    local unitsWithPriority = reduceUnitPacksToUnitAndPriorityTable(self.units)
 
-    for _, unitPack in ipairs(self.units) do
-        for _ = 1, unitPack.unitCount, 1 do
-            table.insert(units, {
-                unitName = unitPack.unitName,
-                frontLinePriority = unitPack.frontLinePriority
-            })
-        end
-    end
-
-    local totalUnitsCount = #units
-    local rowCount = 3
-    local unitCountInRow = math.ceil(totalUnitsCount / rowCount)
+    local totalUnitsCount = #unitsWithPriority
+    local unitCountInRow = math.ceil(totalUnitsCount / self.rowCount)
     local counter = 1
 
-    for _, unitInPack in spairs(units, function(t, a, b)
+    for _, unit in spairs(unitsWithPriority, function(t, a, b)
         return t[b].frontLinePriority < t[a].frontLinePriority
     end) do
         local row = math.ceil(counter / unitCountInRow)
@@ -45,15 +35,30 @@ function Wave:spawnWave()
         local oneUnitYLength = MAP_WAVE_Y_LENGTH / 4
         local oneUnitXLength = 0
 
-        if row ~= rowCount then
+        if row ~= self.rowCount then
             oneUnitXLength = MAP_SPOT_X_LENGTH / (unitCountInRow + 1)
         else
             oneUnitXLength = MAP_SPOT_X_LENGTH / (totalUnitsCount - (unitCountInRow * 2) + 1)
         end
 
-        local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (rowCount - (row - 1)))
-        local unit = CreateUnitByName(unitInPack.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
-        FindClearSpaceForUnit(unit, unitPosition, true)
+        local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (self.rowCount - (row - 1)))
+        local createdUnit = CreateUnitByName(unit.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
+        FindClearSpaceForUnit(createdUnit, unitPosition, true)
         counter = counter + 1
     end
+end
+
+function reduceUnitPacksToUnitAndPriorityTable(units)
+    local unitsWithPriority = {}
+
+    for _, unitPack in ipairs(units) do
+        for _ = 1, unitPack.unitCount, 1 do
+            table.insert(unitsWithPriority, {
+                unitName = unitPack.unitName,
+                frontLinePriority = unitPack.frontLinePriority
+            })
+        end
+    end
+
+    return unitsWithPriority
 end
