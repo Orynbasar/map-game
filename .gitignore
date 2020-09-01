@@ -5,6 +5,10 @@
 *.vxml_c
 *.vcss_c
 *.vjs_c
+*.vtex_c
 
 panorama_debugger.cfg
 settings.kv
+tools_asset_info.bin
+tools_thumbnail_cache.bin
+maps/
