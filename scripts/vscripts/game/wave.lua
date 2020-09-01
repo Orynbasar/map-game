@@ -3,8 +3,8 @@ Wave = createClass({
         {
             unitCount = 20,
             unitName = 'npc_dota_creep_badguys_ranged',
-            frontLinePriority = 10 -- more = front row, less = last row
-        }-- feel free to add new units, like income units and etc...
+            frontLinePriority = 10 --- more = front row, less = last row
+        } --- feel free to add new units, like income units and etc...
     },
     playerID = nil,
 
@@ -13,59 +13,50 @@ Wave = createClass({
         self.playerID = playerID
     end
 
-}, {}, nil)
+}, { rowCount = 3 }, nil)
 
 function Wave:spawnWave()
-    local playerSpot
+    Log:info('Spawn wave for player:' .. self.playerID)
+    local playerSpot = SpotList:getSpotByPlayerID(self.playerID)
+    local waveSpotCenter = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE)
+    local waveSpotFirstEdge = waveSpotCenter - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
 
-    --change to SpotList:getSpotByPlayerID()
-    for _, spot in ipairs(SpotList) do
-        if spot.playerID == self.playerID then
-            playerSpot = spot
-            break
+    local unitsWithPriority = reduceUnitPacksToUnitWithPriorityTable(self.units)
+
+    local totalUnitsCount = #unitsWithPriority
+    local unitCountInRow = math.ceil(totalUnitsCount / self.rowCount)
+
+    table.sort(unitsWithPriority, function (a, b) return (a.frontLinePriority > b.frontLinePriority) end)
+
+    for index, unit in pairs(unitsWithPriority) do
+        local row = math.ceil(index / unitCountInRow)
+        local column = ((index - 1) % unitCountInRow) + 1
+        local oneUnitYLength = MAP_WAVE_Y_LENGTH / 4
+        local oneUnitXLength = 0
+
+        if row ~= self.rowCount then
+            oneUnitXLength = MAP_SPOT_X_LENGTH / (unitCountInRow + 1)
+        else
+            oneUnitXLength = MAP_SPOT_X_LENGTH / (totalUnitsCount - (unitCountInRow * 2) + 1)
         end
-    end
 
-    self:createWave(playerSpot)
+        local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (self.rowCount - (row - 1)))
+        local createdUnit = CreateUnitByName(unit.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
+        FindClearSpaceForUnit(createdUnit, unitPosition, true)
+    end
 end
 
-function Wave:createWave(playerSpot)
-    local spawnPosition = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE, 0)
-    local spawnPositionFirstEdge = spawnPosition - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
+function reduceUnitPacksToUnitWithPriorityTable(units)
+    local unitsWithPriority = {}
 
-    local units = {}
-
-    for _, unitPack in ipairs(self.units) do
+    for _, unitPack in ipairs(units) do
         for _ = 1, unitPack.unitCount, 1 do
-            table.insert(units, {
+            table.insert(unitsWithPriority, {
                 unitName = unitPack.unitName,
                 frontLinePriority = unitPack.frontLinePriority
             })
         end
     end
 
-    local totalUnitsCount = #units
-    local rowCount = 3
-    local unitCountInRow = math.ceil(totalUnitsCount / rowCount)
-    local counter = 1
-
-    for _, unitInPack in spairs(units, function(t, a, b)
-        return t[b].frontLinePriority < t[a].frontLinePriority
-    end) do
-        local row = math.ceil(counter / unitCountInRow)
-        local column = ((counter - 1) % unitCountInRow) + 1
-        local oneUnitYLength = MAP_WAVE_Y_LENGTH / 4
-        local oneUnitXLength = 0
-
-        if row ~= rowCount then
-            oneUnitXLength = MAP_SPOT_X_LENGTH / (unitCountInRow + 1)
-        else
-            oneUnitXLength = MAP_SPOT_X_LENGTH / (totalUnitsCount - (unitCountInRow * 2) + 1)
-        end
-
-        local unitPosition = spawnPositionFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (rowCount - (row - 1)), 0)
-        local unit = CreateUnitByName(unitInPack.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
-        FindClearSpaceForUnit(unit, unitPosition, true)
-        counter = counter + 1
-    end
+    return unitsWithPriority
 end
