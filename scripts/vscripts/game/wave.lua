@@ -21,7 +21,7 @@ function Wave:spawnWave()
     local waveSpotCenter = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE)
     local waveSpotFirstEdge = waveSpotCenter - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
 
-    local unitsWithPriority = reduceUnitPacksToUnitAndPriorityTable(self.units)
+    local unitsWithPriority = reduceUnitPacksToUnitWithPriorityTable(self.units)
 
     local totalUnitsCount = #unitsWithPriority
     local unitCountInRow = math.ceil(totalUnitsCount / self.rowCount)
@@ -48,7 +48,7 @@ function Wave:spawnWave()
     end
 end
 
-function reduceUnitPacksToUnitAndPriorityTable(units)
+function reduceUnitPacksToUnitWithPriorityTable(units)
     local unitsWithPriority = {}
 
     for _, unitPack in ipairs(units) do
