@@ -15,23 +15,23 @@ end
 
 --Любой мусор можно сюда логировать
 function Log:trace(msg)
-    Log:log("[TRACE] " .. msg, TRACE);
+    Log:log("[TRACE] ===> " .. msg, TRACE);
 end
 
 function Log:debug(msg)
-    Log:log("[DEBUG] " .. msg, DEBUG);
+    Log:log("[DEBUG] ===> " .. msg, DEBUG);
 end
 
 function Log:info(msg)
-    Log:log("[INFO ] " .. msg, INFO);
+    Log:log("[INFO ] ===> " .. msg, INFO);
 end
 
 function Log:warn(msg)
-    Log:log("[WARN ] " .. msg, WARN);
+    Log:log("[WARN ] ===> " .. msg, WARN);
 end
 
 function Log:error(msg)
-    Log:log("[ERROR] " .. msg, ERROR);
+    Log:log("[ERROR] ===> " .. msg, ERROR);
 end
 
 function Log:log(msg, level)

@@ -3,8 +3,8 @@ Wave = createClass({
         {
             unitCount = 20,
             unitName = 'npc_dota_creep_badguys_ranged',
-            frontLinePriority = 10 -- more = front row, less = last row
-        }-- feel free to add new units, like income units and etc...
+            frontLinePriority = 10 --- more = front row, less = last row
+        } --- feel free to add new units, like income units and etc...
     },
     playerID = nil,
 
@@ -16,20 +16,7 @@ Wave = createClass({
 }, {}, nil)
 
 function Wave:spawnWave()
-    local playerSpot
-
-    --change to SpotList:getSpotByPlayerID()
-    for _, spot in ipairs(SpotList) do
-        if spot.playerID == self.playerID then
-            playerSpot = spot
-            break
-        end
-    end
-
-    self:createWave(playerSpot)
-end
-
-function Wave:createWave(playerSpot)
+    local playerSpot = SpotList:getSpotByPlayerID(self.playerID)
     local spawnPosition = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE, 0)
     local spawnPositionFirstEdge = spawnPosition - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
 

@@ -21,6 +21,14 @@ Spot = createClass({
     end
 }, {}, nil)
 
+function SpotList:getSpotByPlayerID(playerID)
+    for _, spot in ipairs(SpotList) do
+        if spot.playerID == playerID then
+            return spot
+        end
+    end
+end
+
 function SpotList.init()
     Log:trace('Start spots init')
 
