@@ -25,13 +25,12 @@ function Wave:spawnWave()
 
     local totalUnitsCount = #unitsWithPriority
     local unitCountInRow = math.ceil(totalUnitsCount / self.rowCount)
-    local counter = 1
 
-    for _, unit in spairs(unitsWithPriority, function(t, a, b)
-        return t[b].frontLinePriority < t[a].frontLinePriority
-    end) do
-        local row = math.ceil(counter / unitCountInRow)
-        local column = ((counter - 1) % unitCountInRow) + 1
+    table.sort(unitsWithPriority, function (a, b) return (a.frontLinePriority > b.frontLinePriority) end)
+
+    for index, unit in pairs(unitsWithPriority) do
+        local row = math.ceil(index / unitCountInRow)
+        local column = ((index - 1) % unitCountInRow) + 1
         local oneUnitYLength = MAP_WAVE_Y_LENGTH / 4
         local oneUnitXLength = 0
 
@@ -44,7 +43,6 @@ function Wave:spawnWave()
         local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (self.rowCount - (row - 1)))
         local createdUnit = CreateUnitByName(unit.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
         FindClearSpaceForUnit(createdUnit, unitPosition, true)
-        counter = counter + 1
     end
 end
 
