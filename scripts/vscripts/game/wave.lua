@@ -16,9 +16,10 @@ Wave = createClass({
 }, {}, nil)
 
 function Wave:spawnWave()
+    Log:info('Spawn wave for player', self.playerID)
     local playerSpot = SpotList:getSpotByPlayerID(self.playerID)
-    local spawnPosition = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE, 0)
-    local spawnPositionFirstEdge = spawnPosition - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
+    local waveSpotCenter = playerSpot.position + Vector(0, MAP_Y_BETWEEN_DEFENDER_AND_WAVE)
+    local waveSpotFirstEdge = waveSpotCenter - Vector(MAP_SPOT_X_LENGTH / 2, -MAP_WAVE_Y_LENGTH / 2)
 
     local units = {}
 
@@ -50,7 +51,7 @@ function Wave:spawnWave()
             oneUnitXLength = MAP_SPOT_X_LENGTH / (totalUnitsCount - (unitCountInRow * 2) + 1)
         end
 
-        local unitPosition = spawnPositionFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (rowCount - (row - 1)), 0)
+        local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (rowCount - (row - 1)))
         local unit = CreateUnitByName(unitInPack.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
         FindClearSpaceForUnit(unit, unitPosition, true)
         counter = counter + 1

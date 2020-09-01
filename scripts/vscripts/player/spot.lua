@@ -1,12 +1,12 @@
 SpotPositionList = {
-    Vector(MAP_MIN_X + (1028 * 2), MAP_MAX_Y - (1028 * 5), 0),
-    Vector(MAP_MIN_X + (1028 * 6), MAP_MAX_Y - (1028 * 5), 0),
-    Vector(MAP_MIN_X + (1028 * 10), MAP_MAX_Y - (1028 * 5), 0),
-    Vector(MAP_MIN_X + (1028 * 14), MAP_MAX_Y - (1028 * 5), 0),
-    Vector(MAP_MIN_X + (1028 * 2), MAP_MAX_Y - (1028 * 11), 0),
-    Vector(MAP_MIN_X + (1028 * 6), MAP_MAX_Y - (1028 * 11), 0),
-    Vector(MAP_MIN_X + (1028 * 10), MAP_MAX_Y - (1028 * 11), 0),
-    Vector(MAP_MIN_X + (1028 * 14), MAP_MAX_Y - (1028 * 11), 0),
+    Vector(MAP_MIN_X + (1028 * 2), MAP_MAX_Y - (1028 * 5)),
+    Vector(MAP_MIN_X + (1028 * 6), MAP_MAX_Y - (1028 * 5)),
+    Vector(MAP_MIN_X + (1028 * 10), MAP_MAX_Y - (1028 * 5)),
+    Vector(MAP_MIN_X + (1028 * 14), MAP_MAX_Y - (1028 * 5)),
+    Vector(MAP_MIN_X + (1028 * 2), MAP_MAX_Y - (1028 * 11)),
+    Vector(MAP_MIN_X + (1028 * 6), MAP_MAX_Y - (1028 * 11)),
+    Vector(MAP_MIN_X + (1028 * 10), MAP_MAX_Y - (1028 * 11)),
+    Vector(MAP_MIN_X + (1028 * 14), MAP_MAX_Y - (1028 * 11)),
 }
 
 SpotList = {}
