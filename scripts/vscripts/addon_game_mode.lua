@@ -4,6 +4,7 @@ end
 
 require('map/map')
 require('util/class')
+require('util/util')
 require('util/timers')
 require('util/log')
 require('setup/init')

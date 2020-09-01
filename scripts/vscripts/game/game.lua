@@ -17,7 +17,8 @@ end
 function Game.start()
     Timers:CreateTimer(1, function()
         for _, playerID in ipairs(Game.playersPool) do
-            Wave(10, 'npc_dota_creep_badguys_ranged', playerID):spawnWave()
+            Wave({ { unitCount = 5, unitName = 'npc_dota_creep_badguys_ranged', frontLinePriority = 20 } ,
+                   { unitCount = 5, unitName = 'npc_dota_badguys_siege', frontLinePriority = 10 }   }, playerID):spawnWave()
         end
 
         return 5000.0
