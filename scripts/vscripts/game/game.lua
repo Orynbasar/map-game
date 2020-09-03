@@ -16,6 +16,7 @@ end
 
 function Game.initDefenderTable()
     for _, playerID in ipairs(Game.playersPool) do
+        Log:trace('Create defenders table for player: ' .. playerID)
         DefenderTable[playerID] = {}
 
         local playerSpotPosition = SpotList:getSpotByPlayerID(playerID).position
@@ -29,8 +30,19 @@ function Game.initDefenderTable()
         for x = 1, DEFENDERS_COUNT_X do
             DefenderTable[playerID][x] = {}
             for y = 1, DEFENDERS_COUNT_Y do
-                DefenderTable[playerID][x][y] = { playerSpot = defendersSpotFirstEdge + Vector(xStep * x, -yStep * y, 0) }
+                DefenderTable[playerID][x][y] = { defenderSpot = defendersSpotFirstEdge + Vector(xStep * x, -yStep * y, 0) }
             end
+        end
+
+        printDefenderTableForPlayer(playerID)
+    end
+end
+
+function printDefenderTableForPlayer(playerID)
+    Log:debug('Defender table for player: ' .. playerID)
+    for x = 1, DEFENDERS_COUNT_X do
+        for y = 1, DEFENDERS_COUNT_Y do
+            Log:debug("x: " .. x .. ", y: " .. y .. "spot: " .. tostring(DefenderTable[playerID][x][y].defenderSpot))
         end
     end
 end
