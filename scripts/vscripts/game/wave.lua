@@ -41,7 +41,7 @@ function Wave:spawnWave()
         end
 
         local unitPosition = waveSpotFirstEdge - Vector(-oneUnitXLength * column, oneUnitYLength * (self.rowCount - (row - 1)))
-        local createdUnit = CreateUnitByName(unit.unitName, unitPosition, true, nil, nil, DOTA_TEAM_BADGUYS)
+        local createdUnit = CreateUnitByName(unit.unitName, unitPosition, true, nil, nil, TEAM_BADGUYS)
         FindClearSpaceForUnit(createdUnit, unitPosition, true)
     end
 end

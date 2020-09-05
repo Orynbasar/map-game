@@ -1,92 +1,76 @@
-// Units File
 "DOTAUnits"
 {
 	"Version"	"1"
-	
-	//=================================================================================	
-	// Creature: Gnoll Assassin
-	//=================================================================================
-	"npc_dota_creature_gnoll_assassin"	
+
+	"slark_fighter"
 	{
-		// General
-		//----------------------------------------------------------------
-		"Model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl"	// Model.
+		"Model"						"models/heroes/slark/slark.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"n_creep_Ranged"
-		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"SoundSet"					"Hero_Slark"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slark.vsndevts"
 		"Level"						"1"
-		"ModelScale" 				".9"
+		"ModelScale" 				"1"
 
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
-		"Ability4"					""			// Ability 4
+		"Ability1"					"slark_attack_speed_steal"
 
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"1"			// Physical protection.
+		"ArmorPhysical"				"1"
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"30"		// Damage range min.
-		"AttackDamageMax"			"36"		// Damage range max.
-		"AttackRate"				"1.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
-		"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
-		"ProjectileSpeed"			"1500"		// Speed of projectile.		     
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"20"
+		"AttackDamageMax"			"22"
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.52"
+		"AttackAcquisitionRange"	"500"
+		"AttackRange"				"100"
 
-		// Bounds
-		//----------------------------------------------------------------
 		"RingRadius"				"40"
 		"HealthBarOffset"			"170"
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"24"		// Experience earn.
-		"BountyGoldMin"				"21"		// Gold earned min.
-		"BountyGoldMax"				"29"		// Gold earned max.
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
 
-		// Movement
-		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"		// Speed.			
+		"MovementSpeed"				"270"
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"75"		// Base health.
-		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
-		"StatusManaRegen"			"0.0"		// Mana regeneration rate.		 
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0.0"
 		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"400"		// Range of vision during day light.
-		"VisionNighttimeRange"		"400"		// Range of vision at night time.
+		"VisionDaytimeRange"		"400"
+		"VisionNighttimeRange"		"400"
 
-		// Team
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_NEUTRALS"						// Team name.
+		"TeamName"					"DOTA_TEAM_BADGUYS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-		// Creature Data
-		//----------------------------------------------------------------
 		"Creature"
-		{
-			//Level Up
-			"HPGain"					"50"
-			"DamageGain"				"2"
-			"ArmorGain"					"0.25"
-			"MagicResistGain"			"0.1"
-			"MoveSpeedGain"				"1"
-			"BountyGain"				"3"
-			"XPGain"					"15"
-		}
+        		{
+        			"AttachWearables"
+        			{
+        				"Wearable1"
+        				{
+        					"ItemDef"			"7710"
+        				}
+        				"Wearable2"
+        				{
+        					"ItemDef"			"7711"
+        				}
+        				"Wearable3"
+        				{
+        					"ItemDef"			"7712"
+        				}
+        				"Wearable4"
+        				{
+        					"ItemDef"			"7713"
+        				}
+        				"Wearable5"
+        				{
+        					"ItemDef"			"7714"
+        				}
+        			}
+        		}
 	}
 }

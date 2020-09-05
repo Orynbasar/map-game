@@ -1,3 +1,8 @@
+DEFENDERS_COUNT_X = 8
+DEFENDERS_COUNT_Y = 6
+
+DefenderTable = {}
+
 Defender = createClass({
     hp = 0,
     name = "",
