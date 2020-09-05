@@ -25,6 +25,8 @@ function Precache(context)
             PrecacheResource( "particle", "*.vpcf", context )
             PrecacheResource( "particle_folder", "particles/folder", context )
     ]]
+    PrecacheResource( "model", "models/items/slark/ti9_cache_slark_jungle_rule_head/ti9_cache_slark_jungle_rule_head.vmdl", context )
+
 end
 
 -- Create the game mode when we activate
