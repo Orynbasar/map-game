@@ -11,10 +11,7 @@
 		"Level"						"1"
 		"ModelScale" 				"1"
 
-		"Ability1"					""
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
+		"Ability1"					"slark_attack_speed_steal"
 
 		"ArmorPhysical"				"1"
 

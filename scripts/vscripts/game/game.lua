@@ -57,10 +57,12 @@ function Game.start()
         for i = 1, 1 do
             local createdUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
             createdUnit:SetControllableByPlayer(0, false)
+            createdUnit:GetAbilityByIndex(0):SetLevel(2)
             FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
         end
         for i = 1, 1 do
             local kekUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_BADGUYS)
+            kekUnit:GetAbilityByIndex(0):SetLevel(1)
             FindClearSpaceForUnit(kekUnit, Vector(0,0,0), true)
         end
 
