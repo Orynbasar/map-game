@@ -2,6 +2,74 @@
 {
 	"Version"	"1"
 
+    "slark_simple"
+	{
+		"Model"						"models/heroes/slark/slark.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Slark"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slark.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"0.9"
+
+		"ArmorPhysical"				"1"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"20"
+		"AttackDamageMax"			"22"
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.52"
+		"AttackAcquisitionRange"	"500"
+		"AttackRange"				"100"
+
+		"RingRadius"				"40"
+		"HealthBarOffset"			"170"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"350"
+
+		"StatusHealth"				"400"
+		"StatusHealthRegen"			"0.0"
+		"StatusMana"				"1000"
+		"StatusManaRegen"			"0.0"
+
+		"VisionDaytimeRange"		"400"
+		"VisionNighttimeRange"		"400"
+
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+
+		"Creature"
+        		{
+        			"AttachWearables"
+        			{
+        				"Wearable1"
+        				{
+        					"ItemDef"			"353"
+        				}
+        				"Wearable2"
+        				{
+        					"ItemDef"			"354"
+        				}
+        				"Wearable3"
+        				{
+        					"ItemDef"			"355"
+        				}
+        				"Wearable4"
+        				{
+        					"ItemDef"			"356"
+        				}
+        				"Wearable5"
+        				{
+        					"ItemDef"			"336"
+        				}
+        			}
+        		}
+	}
+
 	"slark_fighter"
 	{
 		"Model"						"models/heroes/slark/slark.vmdl"
@@ -31,20 +99,16 @@
 		"BountyGoldMax"				"0"
 
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"270"
+		"MovementSpeed"				"350"
 
-		"StatusHealth"				"1000"
-		"StatusHealthRegen"			"0.5"
-		"StatusMana"				"0"
-		"StatusManaRegen"			"0.0"
-		
+		"StatusHealth"				"700"
+		"StatusMana"				"1000"
+
 		"VisionDaytimeRange"		"400"
 		"VisionNighttimeRange"		"400"
 
-		"TeamName"					"DOTA_TEAM_BADGUYS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"Creature"
         		{
@@ -69,6 +133,75 @@
         				"Wearable5"
         				{
         					"ItemDef"			"7714"
+        				}
+        			}
+        		}
+	}
+
+	"slark_fighter_lvl_2"
+	{
+		"Model"						"models/heroes/slark/slark.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Slark"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slark.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"1"
+
+		"Ability1"					"slark_attack_speed_steal"
+		"Ability2"					"slark_shadow_dance_custom"
+
+		"ArmorPhysical"				"1"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"
+		"AttackDamageMax"			"27"
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.52"
+		"AttackAcquisitionRange"	"500"
+		"AttackRange"				"100"
+
+		"RingRadius"				"40"
+		"HealthBarOffset"			"170"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"350"
+
+		"StatusHealth"				"1000"
+		"StatusMana"				"1000"
+
+		"VisionDaytimeRange"		"400"
+		"VisionNighttimeRange"		"400"
+
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+
+		"Creature"
+        		{
+        			"AttachWearables"
+        			{
+        				"Wearable1"
+        				{
+        					"ItemDef"			"8688"
+        				}
+        				"Wearable2"
+        				{
+        					"ItemDef"			"8683"
+        				}
+        				"Wearable3"
+        				{
+        					"ItemDef"			"8682"
+        				}
+        				"Wearable4"
+        				{
+        					"ItemDef"			"8681"
+        				}
+        				"Wearable5"
+        				{
+        					"ItemDef"			"8689"
         				}
         			}
         		}

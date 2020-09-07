@@ -54,15 +54,26 @@ function Game.start()
                    { unitCount = 1, unitName = 'slark_fighter', frontLinePriority = 10 } }, playerID):spawnWave()
         end
 
-        for i = 1, 1 do
+        for i = 1, 5 do
             local createdUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
             createdUnit:SetControllableByPlayer(0, false)
-            createdUnit:GetAbilityByIndex(0):SetLevel(2)
             FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
         end
+
+        for i = 1, 5 do
+            local createdUnit = CreateUnitByName('slark_fighter_lvl_2', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
+            createdUnit:SetControllableByPlayer(0, false)
+            FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
+        end
+
+        for i = 1, 5 do
+            local createdUnit = CreateUnitByName('slark_simple', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
+            createdUnit:SetControllableByPlayer(0, false)
+            FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
+        end
+
         for i = 1, 1 do
             local kekUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_BADGUYS)
-            kekUnit:GetAbilityByIndex(0):SetLevel(1)
             FindClearSpaceForUnit(kekUnit, Vector(0,0,0), true)
         end
 
