@@ -27,4 +27,27 @@
 			}
 		}
 	}
+
+   	"slark_shadow_dance_custom"
+        {
+       	"BaseClass"						"ability_lua"
+       	"ScriptFile"					"abilities/slark_fighter/slark_shadow_dance_custom"
+       	"AbilityTextureName"			"slark_shadow_dance"
+
+       	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+       	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+       	"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+       	"AbilityCooldown"				"0.0"
+       	"AbilityManaCost"				"120"
+       	"AbilitySpecial"
+       	{
+       		"01"
+       		{
+       			"var_type"					"FIELD_FLOAT"
+       			"duration"					"4.0"
+       		}
+       	}
+    }
+
 }
