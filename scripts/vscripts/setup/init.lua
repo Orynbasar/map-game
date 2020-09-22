@@ -3,6 +3,7 @@ if CustomGameSetup == nil then
 end
 
 function CustomGameSetup:init()
+    GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
     CustomGameSetup:setupTeams()
     CustomGameSetup:setupGame()
 end
@@ -14,6 +15,7 @@ function CustomGameSetup:setupGame()
 
     --Что бы быстрее пикались герои
     GameRules:SetHeroSelectionTime(0)
+    GameRules:SetHeroSelectPenaltyTime(0)
     GameRules:SetStrategyTime(0)
     GameRules:SetShowcaseTime(0)
     GameRules:SetPreGameTime(0)

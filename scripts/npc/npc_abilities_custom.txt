@@ -28,6 +28,17 @@
 		}
 	}
 
+	"hero_remove"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/slark_fighter/hero_remove"
+        "AbilityTextureName"            "slark_essence_shift"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitDamageType"         "DAMAGE_TYPE_NONE"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_NO"
+	}
+
    	"slark_shadow_dance_custom"
         {
        	"BaseClass"						"ability_lua"

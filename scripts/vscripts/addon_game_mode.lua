@@ -14,6 +14,7 @@ require('player/spot')
 
 require('game/game')
 require('game/wave')
+require('setup/hero_selection')
 require('setup/listeners')
 require('units/defender')
 
@@ -48,9 +49,7 @@ end
 
 function initDebugMode()
     if IsInToolsMode() then
-        --clear annoying previous console messages
-        --SendToServerConsole("clear")
-        Log:SetLogLevel(DEBUG)
+        Log:SetLogLevel(INFO)
     else
         Log:SetLogLevel(INFO)
     end
