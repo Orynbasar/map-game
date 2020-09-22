@@ -6,7 +6,6 @@
 	"npc_dota_hero_wisp_custom"
 	{
 		"override_hero"				"npc_dota_hero_wisp"
-		"Ability1"		            "hero_remove"
 		"ModelScale"		        "1"
         "DisableWearables"          "1"
 	}
@@ -14,7 +13,6 @@
 	"npc_dota_hero_naga_siren_custom"
 	{
 		"override_hero"				"npc_dota_hero_naga_siren"
-		"Ability1"		            "hero_remove"
 		"ModelScale"		        "1"
         "DisableWearables"          "1"
 	}
@@ -22,7 +20,6 @@
 	"npc_dota_hero_doom_bringer_custom"
 	{
 		"override_hero"				"npc_dota_hero_doom_bringer"
-		"Ability1"		            "hero_remove"
 		"ModelScale"		        "1"
         "DisableWearables"          "1"
 	}
