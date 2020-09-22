@@ -1,6 +1,7 @@
 Game = {
+    heroSelectTime = 1000,
     waveNumber = 0,
-    playersPool = {},
+    playersPool = {}, --PlayerSequenceNumber(from 1 to N(playerCount)) and PlayerID
 }
 
 function Game.init()
@@ -53,30 +54,6 @@ function Game.start()
             Wave({ { unitCount = 0, unitName = 'npc_dota_creep_badguys_ranged', frontLinePriority = 20 },
                    { unitCount = 1, unitName = 'slark_fighter', frontLinePriority = 10 } }, playerID):spawnWave()
         end
-
-        for i = 1, 5 do
-            local createdUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
-            createdUnit:SetControllableByPlayer(0, false)
-            FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
-        end
-
-        for i = 1, 5 do
-            local createdUnit = CreateUnitByName('slark_fighter_lvl_2', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
-            createdUnit:SetControllableByPlayer(0, false)
-            FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
-        end
-
-        for i = 1, 5 do
-            local createdUnit = CreateUnitByName('slark_simple', Vector(0,0,0), true, nil, nil, TEAM_CUSTOM_1)
-            createdUnit:SetControllableByPlayer(0, false)
-            FindClearSpaceForUnit(createdUnit, Vector(0,0,0), true)
-        end
-
-        for i = 1, 1 do
-            local kekUnit = CreateUnitByName('slark_fighter', Vector(0,0,0), true, nil, nil, TEAM_BADGUYS)
-            FindClearSpaceForUnit(kekUnit, Vector(0,0,0), true)
-        end
-
 
         return 5000.0
     end)

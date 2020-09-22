@@ -1,0 +1,6 @@
+"CustomHeroList"
+{
+	"npc_dota_hero_wisp"		    "-1"
+	"npc_dota_hero_naga_siren"		"-1"
+	"npc_dota_hero_doom_bringer"	"-1"
+}
