@@ -1,5 +1,5 @@
 Game = {
-    heroSelectTime = 1000,
+    heroSelectTime = 3,
     waveNumber = 0,
     playersPool = {}, --PlayerSequenceNumber(from 1 to N(playerCount)) and PlayerID
 }
